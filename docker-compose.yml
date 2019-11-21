@@ -1,0 +1,10 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=foii_admin
+      - POSTGRES_PASSWORD=foii2019
+      - POSTGRES_DB=schedule_manager
