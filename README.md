@@ -119,4 +119,5 @@ Campos da tabela agendamento:
 7. Teste os endpoints disponíveis... Você pode consultar na configuração do insomnia no arquivo
    [(aqui)](./Insomnia_configuration.json) ou no [(link do postman)](https://documenter.getpostman.com/view/9571652/SW7c27Vj)
 
+8. [Documentação da API]: (https://documenter.getpostman.com/view/9571652/SW7c27Vj?version=latest)
 
