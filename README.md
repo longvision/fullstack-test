@@ -119,6 +119,4 @@ Campos da tabela agendamento:
 7. Teste os endpoints disponíveis... Você pode consultar na configuração do insomnia no arquivo
    [(aqui)](./Insomnia_configuration.json) ou no [(link do postman)](https://documenter.getpostman.com/view/9571652/SW7c27Vj)
 
-## Tempo de atividade
-O projeto foi produzido em aproximadamente 3hrs, desde sua configuração até a documentação
-O rastreamento dele pode ser visto no Wakatime: [(aqui)])https://wakatime.com/@felipearodalves/projects/bdexxtqpuc?start=2019-11-16&end=2019-11-22)
+
