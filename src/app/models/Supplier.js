@@ -24,7 +24,7 @@ class Supplier extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Schedules);
+    this.hasMany(models.Schedule);
   }
 }
 
