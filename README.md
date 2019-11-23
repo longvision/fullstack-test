@@ -17,8 +17,8 @@ Abaixo estão descritas as funcionalidades que temos até o momento
 
 ### Autenticação
 
-Permite que um usuário administrador se autentique na aplicação utilizando e-mail e uma senha. E ao fazer login retorna um token que deve ser utilizado para realizar as ações nas chamadas às APÌs.
-Existe um usuário administrador na sua base de dados, utilize esse usuário para todos logins daqui pra frente.
+Permite que um usuário administrador se autentique na aplicação utilizando e-mail e uma senha. E ao fazer login retorna um token que deve ser utilizado para realizar as ações nas chamadas às APIs.
+Atualmente existe apenas um usuário administrador na base de dados, que é capaz de acessar todo o sistema. * Mais a baixo nós vamos mudar isso, acrescentando novos tipos de usuários. Mas antes vejamos como o sistema está montado até agora...
 
 - A autenticação é feita utilizando JWT para validação dos dados de entrada;
 
@@ -90,20 +90,23 @@ Campos da tabela agendamento:
 
 ## Tarefas a serem implementadas no Back-End:
 
-1. Permitir que clientes e fornecedores também se cadastrem e façam login no sistema. Para isso defina e explique as alterações feitas para controlar cada tipo de acesso.
 
-2. Criar tabela ``Conditions`` onde o ``cliente`` poderá criar/alterar/deletar os seus problemas e condições médicas. Possuindo os seguintes campos:
+1. Alterar o sistema para que mais dois tipos de usuário tenha acesso à certas partes do sistema: Administradores (já implementado); Os Clientes e os Fornecedores ( a ser implementado). Permita que ambos se cadastrem e façam login no sistema.Para isso defina e explique as alterações feitas para controlar cada tipo de acesso.
+
+1. Criar tabela ``Conditions`` onde o usuário (cliente) poderá criar/alterar/deletar os seus problemas e condições médicas. Possuindo os seguintes campos:
    - id
    - user_id
    - condition
 
-3. ``Fornecedores`` também poderão se cadastrar/editar/deletar seu registro na tabela fornecedores(Suppliers) com token válido.
+2. Todos os usuários devem ter um token válido para acessar o sistema.
 
-4. ``Clientes`` também poderão agendar/cancelar horários na tabela consultas(Schedules) com token válido.
+3. Para que o front end futuramente possa controlar quem tem acesso a certas partes do app, elaborar uma forma de retornar o tipo de usuário (administrador, cliente ou fornecedor) logado no sistema.
 
 
 ## Tarefas a serem implementadas no Front-End:
 
-1. Criar tela de login e cadastro utilizando o back-end dado.
-2. No fluxo de telas, o usuário deverá escolher se é cliente ou fornecedor antecipadamente ao cadastro.
-3. Após escolher se é cliente ou fornecedor, poderá incluir o seu email, senha.
+1. Criar processo de login e cadastro utilizando o back-end dado.
+
+2. Na hora de criar as telas, o usuário deverá escolher se é cliente ou fornecedor antecipadamente ao cadastro.
+
+3. Após escolher se é cliente ou fornecedor, poderá incluir o seus detalhes como name, password, address, price, capacity (fornecedor); ou name, email, condition (cliente).
