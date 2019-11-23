@@ -1,6 +1,6 @@
 # Schedule Manager da FOII
 
-A aplicação que iremos dar início ao desenvolvimento é um app gerenciador de consultas.
+A aplicação que iremos dar continuidade é o desenvolvimento de um app gerenciador de consultas.
 Nesse primeiro desafio vamos criar algumas funcionalidades básicas.
 
 ### Um pouco sobre as ferramentas
@@ -11,58 +11,20 @@ Você deverá criar a aplicação do zero utilizando o Express, além de precisa
 - ESLint + Prettier + EditorConfig;
 - Sequelize (Utilize PostgreSQL);
 
-## Funcionalidades
+## Funcionalidades já existentes
 
-Abaixo estão descritas as funcionalidades que você deve adicionar em sua aplicação.
+Abaixo estão descritas as funcionalidades que temos até o momento
 
 ### Autenticação
 
-Permita que um usuário se autentique em sua aplicação utilizando e-mail e uma senha.
-Crie um usuário administrador utilizando a funcionalidade de seeds do sequelize, essa funcionalidade serve para criarmos registros na base de dados de forma automatizada.
-Para criar um seed utilize o comando:
+Permite que um usuário administrador se autentique na aplicação utilizando e-mail e uma senha. E ao fazer login retorna um token que deve ser utilizado para realizar as ações nas chamadas às APÌs.
+Existe um usuário administrador na sua base de dados, utilize esse usuário para todos logins daqui pra frente.
 
-```
-yarn sequelize seed:generate --name admin-user
-```
-
-No arquivo gerado na pasta src/database/seeds adicione o código referente à criação de um usuário administrador:
-
-```javascript
-const bcrypt = require('bcryptjs');
-module.exports = {
-  up: QueryInterface => {
-    return QueryInterface.bulkInsert(
-      'users',
-      [
-        {
-          name: 'Administrador',
-          email: 'admin@admin.com',
-          password_hash: bcrypt.hashSync('123456', 8),
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-      {}
-    );
-  },
-  down: () => {},
-};
-```
-
-Agora execute:
-
-```
-yarn sequelize db:seed:all
-```
-
-Agora você tem um usuário na sua base de dados, utilize esse usuário para todos logins daqui pra frente.
-
-- A autenticação deve ser feita utilizando JWT.
-- Realize a validação dos dados de entrada;
+- A autenticação é feita utilizando JWT para validação dos dados de entrada;
 
 ### Cadastro de fornecedores
 
-Permita que fornecedores sejam mantidos (cadastrados/atualizados/deletados) pelos administradores na aplicação utilizando os campos:
+Permite que fornecedores sejam mantidos (cadastrados/atualizados/deletados) pelos administradores na aplicação utilizando os campos:
 
 - supplier_id (gerado no backend),
 - nome (informado pelo front)
@@ -71,12 +33,14 @@ Permita que fornecedores sejam mantidos (cadastrados/atualizados/deletados) pelo
 - preco_hora (informado pelo front)
 - capacidade (informado pelo front)
 - created_at (gerado no backend),
-- updated_at (gerado no backend)
-  Utilize uma nova tabela no banco de dados chamada de fornecedores.
+- updated_at (gerado no backend),
+
+  Nova tabela no banco de dados chamada de fornecedores.
+
   O cadastro de fornecedores só pode ser feito por administradores autenticados na aplicação.
   O fornecedor não pode se autenticar no sistema, ou seja, não possui senha.
 
-### Agendamento de consultas
+### Agendamento de consultas (Schedule)
 
 Campos da tabela agendamento:
 
@@ -106,7 +70,7 @@ Campos da tabela agendamento:
 
 1. Clone este repositório
 2. Execute `yarn` ou `npm install` para baixar as dependências
-3. Certifique-se de executar/rodar o docker com o banco Postgres
+3. Certifique-se de executar/rodar (run) o docker com o banco Postgres
 4. Certifique-se do arquivo .env para as configurações do banco de dados
 5. Execute as migrations e o seed do usuário principal
 
@@ -116,8 +80,30 @@ Campos da tabela agendamento:
 ```
 
 6. execute `yarn dev` para iniciar o servidor
-7. Teste os endpoints disponíveis... Você pode consultar na configuração do insomnia no arquivo
+7. Certifique-se de rodar o docker-compose após ter configurado os passos anteriores
+8. Teste os endpoints disponíveis... Você pode consultar na configuração do insomnia no arquivo
    [(aqui)](./Insomnia_configuration.json) ou no [(link do postman)](https://documenter.getpostman.com/view/9571652/SW7c27Vj)
 
-8. Documentação da API: [(aqui)](https://documenter.getpostman.com/view/9571652/SW7c27Vj?version=latest)
+9. Documentação da API: [(aqui)](https://documenter.getpostman.com/view/9571652/SW7c27Vj?version=latest)
 
+10. Para conseguir executar as ações na tabela Schedule é preciso estar autenticado como administador. Para isso é preciso executar o login com os dados do administrador e utilizar o token devolvido na resposta. Utilize o mesmo token para fazer as requisições na tabela Schedule.
+
+## Tarefas a serem implementadas no Back-End:
+
+1. Permitir que clientes e fornecedores também se cadastrem e façam login no sistema. Para isso defina e explique as alterações feitas para controlar cada tipo de acesso.
+
+2. Criar tabela ``Conditions`` onde o ``cliente`` poderá criar/alterar/deletar os seus problemas e condições médicas. Possuindo os seguintes campos:
+   - id
+   - user_id
+   - condition
+
+3. ``Fornecedores`` também poderão se cadastrar/editar/deletar seu registro na tabela fornecedores(Suppliers) com token válido.
+
+4. ``Clientes`` também poderão agendar/cancelar horários na tabela consultas(Schedules) com token válido.
+
+
+## Tarefas a serem implementadas no Front-End:
+
+1. Criar tela de login e cadastro utilizando o back-end dado.
+2. No fluxo de telas, o usuário deverá escolher se é cliente ou fornecedor antecipadamente ao cadastro.
+3. Após escolher se é cliente ou fornecedor, poderá incluir o seu email, senha.
