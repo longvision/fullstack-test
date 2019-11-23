@@ -1,6 +1,6 @@
 # Schedule Manager da FOII
 
-A aplicação que iremos dar continuidade é o desenvolvimento de um app gerenciador de consultas.
+A aplicação que iremos dar continuidade no desenvolvimento é um app gerenciador de consultas.
 Nesse primeiro desafio vamos criar algumas funcionalidades básicas.
 
 ### Um pouco sobre as ferramentas
