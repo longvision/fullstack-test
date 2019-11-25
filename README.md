@@ -91,7 +91,7 @@ Campos da tabela agendamento:
 ## Tarefas a serem implementadas no Back-End:
 
 
-1. Alterar o sistema para que mais dois tipos de usuário tenha acesso à certas partes do sistema: Administradores (já implementado); Os Clientes e os Fornecedores ( a ser implementado). Permita que ambos se cadastrem e façam login no sistema.Para isso defina e explique as alterações feitas para controlar cada tipo de acesso.
+1. Alterar o sistema para que mais dois tipos de usuário (Os Clientes e os Fornecedores, a serem implementados) tenham acesso à certas partes do sistema além dos Administradores (já implementado); Permita que ambos se cadastrem e façam login no sistema.Para isso defina e explique as alterações feitas para controlar cada tipo de acesso.
 
 1. Criar tabela ``Conditions`` onde o usuário (cliente) poderá criar/alterar/deletar os seus problemas e condições médicas. Possuindo os seguintes campos:
    - id
